@@ -4,11 +4,10 @@ import { useAppSelector } from '../store'
 export function VideoPlayer(){
   const lesson = useAppSelector(state => {
     const { currentLessonIndex, currentModuleIndex } = state.player
-
     const currentLesson = state.player.course.modules[currentModuleIndex].lessons[currentLessonIndex]
-
     return currentLesson
   })
+
   return (
     <div className="w-full bg-zinc-950 aspect-video">
       <ReactPlayer 
