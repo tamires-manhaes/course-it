@@ -4,16 +4,28 @@ import { Header } from "../components/Header";
 import { VideoPlayer } from "../components/VideoPlayer";
 import { Module } from "../components/Module";
 import { useAppSelector } from "../store";
-import { useCurrentLesson } from "../store/slices/player";
+import { start, useCurrentLesson } from "../store/slices/player";
 import { useEffect } from "react";
+import { api } from "../lib/axios";
+import { useDispatch } from "react-redux";
+
 
 export function Player(){
-  const modules = useAppSelector(state => state.player.course.modules)
+  const dispatch = useDispatch()
+  const modules = useAppSelector(state => state.player.course?.modules)
 
   const { currentLesson } = useCurrentLesson()
 
   useEffect(() => {
-    document.title = `Assistindo: ${currentLesson.title}`
+    api.get('courses/1').then((res) => {
+      dispatch(start(res.data))
+    })
+  }, [])
+
+  useEffect(() => {
+    if(currentLesson) {
+      document.title = `Assistindo: ${currentLesson.title}`
+    }
   }, [currentLesson])
 
   return (
@@ -34,7 +46,7 @@ export function Player(){
           </div>
           
           <aside className="w-80 absolute top-0 bottom-0 right-0 border-l border-zinc-800 bg-zinc-900 divide-y-1 divide-zinc-900 overflow-y-scroll scrollbar scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800">
-            {modules.map((module, index) => {
+            {modules && modules.map((module, index) => {
               return (
                 <Module 
                   key={module.id} 
