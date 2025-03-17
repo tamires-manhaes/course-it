@@ -1,6 +1,7 @@
 
 import { describe, it, expect } from "vitest";
-import { player as reducer, play, next, PlayerState } from "./player";
+import { player as reducer, play, next } from "./player";
+import { PlayerState } from "../../@types";
 
 const exampleState: PlayerState = {
   course: {
@@ -26,7 +27,10 @@ const exampleState: PlayerState = {
   },
   currentModuleIndex: 0,
   currentLessonIndex: 0,
-  isLoading: false
+  isLoading: false,
+  next: () => {},
+  play: () => {},
+  load: async () => {}
 }
 
 describe('player slice', () => {

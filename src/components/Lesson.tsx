@@ -1,7 +1,5 @@
 import { PlayCircle, Video } from "lucide-react";
 
-
-
 interface LessonProps {
   title: string
   duration: string

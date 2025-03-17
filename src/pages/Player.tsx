@@ -3,22 +3,25 @@ import { Loader, MessageCircle } from "lucide-react";
 import { Header } from "../components/Header";
 import { VideoPlayer } from "../components/VideoPlayer";
 import { Module } from "../components/Module";
-import { useAppDispatch, useAppSelector } from "../store";
-import { loadCourse, useCurrentLesson } from "../store/slices/player";
 import { useEffect } from "react";
-
-
+import { useCurrentLesson, useStore } from "../zustand-store";
 
 export function Player(){
-  const dispatch = useAppDispatch()
-  const modules = useAppSelector(state => state.player.course?.modules)
-  const isCourseLoading = useAppSelector(state => state.player.isLoading)
-
+  const { course, load, isLoading } = useStore(store => {
+    return {
+      course: store.course,
+      load: store.load,
+      isLoading: store.isLoading
+    }
+  })
+  
   const { currentLesson } = useCurrentLesson()
 
   useEffect(() => {
-    dispatch(loadCourse())
-  }, [])
+    if (!course) {
+      load()
+    }
+  }, [course, load])
 
   useEffect(() => {
     if(currentLesson) {
@@ -44,12 +47,12 @@ export function Player(){
           </div>
           
           <aside className="w-80 absolute top-0 bottom-0 right-0 border-l border-zinc-800 bg-zinc-900 divide-y-1 divide-zinc-900 overflow-y-scroll scrollbar scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800">
-            {isCourseLoading ? (
+            {isLoading ? (
               <div className='flex h-full items-center justify-center'>
                 <Loader className='w-6 h-6 text-zinc-400 animate-spin'/>
               </div>
             ) : (
-              modules && modules.map((module, index) => {
+              course?.modules && course?.modules.map((module, index) => {
                 return (
                   <Module 
                     key={module.id} 

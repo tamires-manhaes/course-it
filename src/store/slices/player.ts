@@ -1,32 +1,18 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { useAppSelector } from "..";
 import { api } from "../../lib/axios";
+import { PlayerState } from "../../@types";
 
-interface CourseState {
-  id: number
-  modules: Array<{
-    id: number
-    title: string
-    lessons: Array<{
-      id: string
-      title: string
-      duration: string
-    }>
-  }>
-}
 
-export interface PlayerState {
-  currentModuleIndex: number
-  currentLessonIndex: number
-  course: CourseState | null
-  isLoading: boolean
-}
 
 const initialState: PlayerState = {
   course: null,
   currentModuleIndex: 0,
   currentLessonIndex: 0,
-  isLoading: true
+  isLoading: true,
+  next: () => {},
+  play: () => {},
+  load: async () => {}
 }
 
 export const loadCourse = createAsyncThunk(
