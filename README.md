@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# 📺 Course.it
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+<img src="https://raw.githubusercontent.com/tamires-manhaes/course-it/refs/heads/main/project.png" width="350" />
 
-Currently, two official plugins are available:
+<div data-badges>
+    <img src="https://img.shields.io/github/stars/portfolio-projetos-dev/todo-list?style=for-the-badge" alt="GitHub stars" />
+    <img src="https://img.shields.io/github/forks/portfolio-projetos-dev/todo-list?style=for-the-badge" alt="GitHub forks" />
+    <img src="https://img.shields.io/github/issues/portfolio-projetos-dev/todo-list?style=for-the-badge" alt="GitHub issues" />
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<div data-badges>
+    <img src="https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
+    <img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
+</div>
+</div>
 
-## Expanding the ESLint configuration
+Course.it  é uma aplicação desenvolvida para exibir conteudos de um curso utilizando jsonserver como api.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Com uma interface intuitiva e moderna, a aplicação proporciona uma experiência fluida para assistir, passar e dar auto play na playlist criada
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🖥️ Como rodar este projeto 🖥️
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Requisitos:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- [Node.js](https://nodejs.org/pt) instalado
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Execução:
+
+1. Clone este repositório:
+
+   ```sh
+   git clone https://github.com/tamires-manhaes/course-it
+   ```
+
+2. Acesse o diretório do projeto:
+
+   ```sh
+   cd course-it
+   ```
+
+3. Instale as dependências:
+
+   ```sh
+   npm install
+   ```
+
+4. Inicie o servidor (vite.js):
+
+   ```sh
+   npm run dev
+   ```
+
+5. Acesse o projeto no seu dispositivo.
+
+## 🗒️ Features do projeto 🗒️
+
+- Exibicao dos modulos do curso
+- Auto play nas aulas e modulos
+
+## 💎 Links úteis 💎
+
+- [NodeJS](https://nodejs.org/docs/latest/api/)
